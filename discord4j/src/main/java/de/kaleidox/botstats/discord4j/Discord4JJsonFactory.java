@@ -39,6 +39,8 @@ public class Discord4JJsonFactory extends JsonFactory {
                     node.put("shardCount", shardCount);
 
                     break;
+                case SHARD_ARRAY:
+                    break;
                 case SHARD_ID:
                     final int shardId = d4j.getConfig().getShardIndex();
 

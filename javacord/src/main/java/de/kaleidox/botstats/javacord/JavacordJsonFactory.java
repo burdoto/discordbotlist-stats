@@ -38,6 +38,8 @@ public class JavacordJsonFactory extends JsonFactory {
                     node.put("shardCount", shardCount);
 
                     break;
+                case SHARD_ARRAY:
+                    break;
                 case SHARD_ID:
                     final int shardId = api.getCurrentShard();
 

@@ -47,6 +47,8 @@ public class JDAJsonFactory extends JsonFactory {
                     node.put("shardCount", shardCount);
 
                     break;
+                case SHARD_ARRAY:
+                    break;
                 case SHARD_ID:
                     final int shardId = jda.getShardInfo().getShardId();
 
