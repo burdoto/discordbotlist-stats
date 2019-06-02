@@ -2,6 +2,7 @@ package de.kaleidox.botstats.javacord;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import de.kaleidox.botstats.BotListSettings;
@@ -36,13 +37,31 @@ public class JavacordStatsClient extends StatsClient {
      * @param api      A single DiscordApi instance (single shard).
      */
     public JavacordStatsClient(BotListSettings settings, DiscordApi api) {
-        super(settings, new JavacordJsonFactory(api));
+        super(settings, new JavacordSingleShardedJsonFactory(api));
         this.api = api;
 
         client = new OkHttpClient.Builder().build();
 
         api.addServerJoinListener(this::serverChange);
         api.addServerLeaveListener(this::serverChange);
+    }
+
+    /**
+     * Single-sharded constructor.
+     *
+     * @param settings The settings object.
+     * @param apis     A single DiscordApi instance (single shard).
+     */
+    public JavacordStatsClient(BotListSettings settings, List<DiscordApi> apis) {
+        super(settings, new JavacordMultiShardedJsonFactory(apis));
+        this.api = apis.get(0);
+
+        client = new OkHttpClient.Builder().build();
+
+        apis.forEach(api -> {
+            api.addServerJoinListener(this::serverChange);
+            api.addServerLeaveListener(this::serverChange);
+        });
     }
 
     @Override

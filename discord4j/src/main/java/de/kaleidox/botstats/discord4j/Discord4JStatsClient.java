@@ -1,6 +1,7 @@
 package de.kaleidox.botstats.discord4j;
 
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import de.kaleidox.botstats.BotListSettings;
@@ -33,7 +34,7 @@ public class Discord4JStatsClient extends StatsClient {
      * @param d4j      A single Discord4J instance (single shard).
      */
     public Discord4JStatsClient(BotListSettings settings, DiscordClient d4j) {
-        super(settings, new Discord4JJsonFactory(d4j));
+        super(settings, new Discord4JSingleShardedJsonFactory(d4j));
         this.d4j = d4j;
 
         client = HttpClient.create();
@@ -45,6 +46,28 @@ public class Discord4JStatsClient extends StatsClient {
         d4j.getEventDispatcher()
                 .on(MemberLeaveEvent.class)
                 .subscribe(this::serverChange);
+    }
+
+    /**
+     * Single-Sharded constructor.
+     *
+     * @param settings The settings object.
+     * @param d4js     A single Discord4J instance (single shard).
+     */
+    public Discord4JStatsClient(BotListSettings settings, List<DiscordClient> d4js) {
+        super(settings, new Discord4JMultiShardedJsonFactory(d4js));
+        this.d4j = d4js.get(0);
+
+        client = HttpClient.create();
+
+        d4js.forEach(d4j -> {
+            d4j.getEventDispatcher()
+                    .on(MemberJoinEvent.class)
+                    .subscribe(this::serverChange);
+            d4j.getEventDispatcher()
+                    .on(MemberLeaveEvent.class)
+                    .subscribe(this::serverChange);
+        });
     }
 
     @Override
