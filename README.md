@@ -16,14 +16,14 @@ Easy-to-use library for posting stats on most available Discord Bot list.
 <dependency>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotslist-stats-javacord</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.1'
+    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.2'
 }
 ```
 
@@ -34,14 +34,14 @@ dependencies {
 <dependency>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotslist-stats-discord4j</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-discord4j:0.1.1'
+    implementation 'de.kaleidox:discordbotlist-stats-discord4j:0.1.2'
 }
 ```
 
@@ -52,13 +52,13 @@ dependencies {
 <dependency>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotslist-stats-jda</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.1'
+    implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.2'
 }
 ```
