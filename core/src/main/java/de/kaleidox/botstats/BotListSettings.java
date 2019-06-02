@@ -1,5 +1,7 @@
 package de.kaleidox.botstats;
 
+import java.util.function.Supplier;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +22,7 @@ public class BotListSettings {
     private final String discordbotlist_com_token;
     private final String divinediscordbots_com_token;
     private final String bots_ondiscord_xyz_token;
+    private final Supplier<Boolean> postStatsTester;
 
     /**
      * Returns how many tokens are actually defined.

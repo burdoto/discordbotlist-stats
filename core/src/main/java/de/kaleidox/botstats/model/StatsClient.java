@@ -37,27 +37,30 @@ public abstract class StatsClient {
      * @return A future that completes when all stats have been updated.
      */
     public synchronized CompletableFuture<Void> updateAllStats() {
-        final CompletableFuture[] futures = new CompletableFuture[settings.definedTokenCount()];
+        if (settings.getPostStatsTester().get()) {
+            final CompletableFuture[] futures = new CompletableFuture[settings.definedTokenCount()];
 
-        BotList[] lists = BotList.values();
-        for (int i = 0; i < lists.length; i++) {
-            BotList botList = lists[i];
-            String token = botList.getToken(settings);
-            Endpoint endpoint = botList.getEndpointLibrary().with(Endpoint.Target.STATS).orElse(null);
+            BotList[] lists = BotList.values();
+            for (int i = 0; i < lists.length; i++) {
+                BotList botList = lists[i];
+                String token = botList.getToken(settings);
+                Endpoint endpoint = botList.getEndpointLibrary().with(Endpoint.Target.STATS).orElse(null);
 
-            if (token == null || endpoint == null) {
-                logDebug((token == null ? "Token" : "Endpoint") + " for " + botList + " was null! Skipping.");
-                futures[i] = CompletableFuture.completedFuture(null);
-                continue;
+                if (token == null || endpoint == null) {
+                    logDebug((token == null ? "Token" : "Endpoint") + " for " + botList + " was null! Skipping.");
+                    futures[i] = CompletableFuture.completedFuture(null);
+                    continue;
+                }
+
+                URL url = endpoint.url(getOwnId());
+                String body = jsonFactory.getStatJson(botList.getStatScopes());
+
+                futures[i] = executeRequest(url, POST, token, body);
             }
 
-            URL url = endpoint.url(getOwnId());
-            String body = jsonFactory.getStatJson(botList.getStatScopes());
-
-            futures[i] = executeRequest(url, POST, token, body);
+            return CompletableFuture.allOf(futures);
         }
-
-        return CompletableFuture.allOf(futures);
+        return CompletableFuture.completedFuture(null);
     }
 
     /**
