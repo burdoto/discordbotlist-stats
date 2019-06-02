@@ -22,7 +22,7 @@ public class BotListSettings {
     private final String discordbotlist_com_token;
     private final String divinediscordbots_com_token;
     private final String bots_ondiscord_xyz_token;
-    private final Supplier<Boolean> postStatsTester;
+    private @Builder.Default final Supplier<Boolean> postStatsTester = () -> true;
 
     /**
      * Returns how many tokens are actually defined.
