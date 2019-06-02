@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotlist-stats-discord4j</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <name>Discord Bot List Stats</name>
   <description>Library for posting stats to most available Discord Bot Lists!</description>
   <url>https://github.com/burdoto/discorbotlist-stats-discord4j</url>
@@ -31,7 +31,7 @@
     <dependency>
       <groupId>de.kaleidox</groupId>
       <artifactId>discordbotlist-stats-core</artifactId>
-      <version>0.1.1</version>
+      <version>0.1.2</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

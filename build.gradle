@@ -6,7 +6,7 @@ buildscript {
 apply plugin: 'java-library'
 
 group 'de.kaleidox'
-version '2'
+version '3'
 
 apply from: 'gradle/vars.gradle'
 
@@ -57,11 +57,11 @@ subprojects {
 }
 
 project(':core') {
-    version '0.1.1'
+    version '0.1.2'
 }
 
 project(':discord4j') {
-    version '0.1.1'
+    version '0.1.2'
 
     dependencies {
         api project(':core')
@@ -72,7 +72,7 @@ project(':discord4j') {
 }
 
 project(':javacord') {
-    version '0.1.1'
+    version '0.1.2'
 
     dependencies {
         api project(':core')
@@ -86,7 +86,7 @@ project(':javacord') {
 }
 
 project(':jda') {
-    version '0.1.1'
+    version '0.1.2'
 
     dependencies {
         api project(':core')

@@ -12,6 +12,8 @@ import de.kaleidox.botstats.net.Method;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.events.guild.GenericGuildEvent;
+import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
+import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -49,24 +51,24 @@ public class JDAStatsClient extends StatsClient {
         if (shardManager == null) {
             jda.addEventListener(new ListenerAdapter() {
                 @Override
-                public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+                public void onGuildJoin(GuildJoinEvent event) {
                     serverChange(event);
                 }
 
                 @Override
-                public void onGuildMemberLeave(GuildMemberLeaveEvent event) {
+                public void onGuildLeave(GuildLeaveEvent event) {
                     serverChange(event);
                 }
             });
         } else {
             shardManager.addEventListener(new ListenerAdapter() {
                 @Override
-                public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+                public void onGuildJoin(GuildJoinEvent event) {
                     serverChange(event);
                 }
 
                 @Override
-                public void onGuildMemberLeave(GuildMemberLeaveEvent event) {
+                public void onGuildLeave(GuildLeaveEvent event) {
                     serverChange(event);
                 }
             });

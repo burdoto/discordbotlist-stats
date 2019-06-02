@@ -62,3 +62,32 @@ dependencies {
     implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.2'
 }
 ```
+
+## Usage example: Javacord
+You have two possible ways of using this library.
+In these examples, we will be using Javacord for demonstration purposes.
+
+#### Creating a Single-Sharded stats connection
+To create a single sharded stats connection, you must first define your Javacord `DiscordApi` object, and then pass that to the `JavacordStatsClient` constructor.
+
+You will also need to create a `BotListSettings` object, which will serve as your token carrier.
+This object can be built using the included builder structure.
+If you do not set a token for a bot list service in the builder, no stats will be posted to that service. 
+```java
+DiscordApi api = new DiscordApiBuilder()
+        .setToken(/* token */)
+        .login()
+        .exceptionally(ExceptionLogger.get())
+        .join();
+
+BotListSettings settings = BotListSettings.builder()
+        .postStatsTester(OSValidator::isUnix)
+        /* define all tokens that you want to use */
+        .discordbots_org_token(/* token */)
+        .divinediscordbots_com_token(/* token */)
+        .build();
+StatsClient stats = new JavacordStatsClient(settings, API);
+```
+That's it already! The `StatsClient` object does the rest for you.
+In every library, it will register itself as a `GuildJoin` and `GuildLeave` listener, 
+and update the stats everytime the bot joins or leaves a guild.

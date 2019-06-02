@@ -9,6 +9,8 @@ import de.kaleidox.botstats.model.StatsClient;
 import de.kaleidox.botstats.net.Method;
 
 import discord4j.core.DiscordClient;
+import discord4j.core.event.domain.guild.GuildCreateEvent;
+import discord4j.core.event.domain.guild.GuildDeleteEvent;
 import discord4j.core.event.domain.guild.GuildEvent;
 import discord4j.core.event.domain.guild.MemberJoinEvent;
 import discord4j.core.event.domain.guild.MemberLeaveEvent;
@@ -40,11 +42,10 @@ public class Discord4JStatsClient extends StatsClient {
         client = HttpClient.create();
 
         d4j.getEventDispatcher()
-                .on(MemberJoinEvent.class)
+                .on(GuildCreateEvent.class)
                 .subscribe(this::serverChange);
-
         d4j.getEventDispatcher()
-                .on(MemberLeaveEvent.class)
+                .on(GuildDeleteEvent.class)
                 .subscribe(this::serverChange);
     }
 
@@ -62,10 +63,10 @@ public class Discord4JStatsClient extends StatsClient {
 
         d4js.forEach(d4j -> {
             d4j.getEventDispatcher()
-                    .on(MemberJoinEvent.class)
+                    .on(GuildCreateEvent.class)
                     .subscribe(this::serverChange);
             d4j.getEventDispatcher()
-                    .on(MemberLeaveEvent.class)
+                    .on(GuildDeleteEvent.class)
                     .subscribe(this::serverChange);
         });
     }
