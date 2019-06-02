@@ -77,7 +77,6 @@ If you do not set a token for a bot list service in the builder, no stats will b
 DiscordApi api = new DiscordApiBuilder()
         .setToken(/* token */)
         .login()
-        .exceptionally(ExceptionLogger.get())
         .join();
 
 BotListSettings settings = BotListSettings.builder()
