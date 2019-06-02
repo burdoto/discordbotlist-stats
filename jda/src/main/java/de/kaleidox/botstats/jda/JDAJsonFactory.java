@@ -7,6 +7,7 @@ import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.managers.AudioManager;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -48,6 +49,13 @@ public class JDAJsonFactory extends JsonFactory {
 
                     break;
                 case SHARD_ARRAY:
+                    JSONArray shards = new JSONArray();
+
+                    if (shardManager == null) shards.put(jda.getGuilds().size());
+                    else for (JDA shard : shardManager.getShards()) shards.put(shard.getGuilds().size());
+
+                    node.put("shards", shards);
+
                     break;
                 case SHARD_ID:
                     final int shardId = jda.getShardInfo().getShardId();

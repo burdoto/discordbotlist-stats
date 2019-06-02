@@ -40,6 +40,8 @@ public class Discord4JSingleShardedJsonFactory extends JsonFactory {
 
                     break;
                 case SHARD_ARRAY:
+                    d4j.getGuilds().count().subscribe(count -> node.putArray("shards").add(count));
+
                     break;
                 case SHARD_ID:
                     final int shardId = d4j.getConfig().getShardIndex();

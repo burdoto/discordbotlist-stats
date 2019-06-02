@@ -5,6 +5,7 @@ import java.util.List;
 import de.kaleidox.botstats.endpoints.Scope;
 import de.kaleidox.botstats.model.JsonFactory;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.javacord.api.DiscordApi;
@@ -41,6 +42,10 @@ public class JavacordMultiShardedJsonFactory extends JsonFactory {
 
                     break;
                 case SHARD_ARRAY:
+                    ArrayNode shards = node.putArray("shards");
+
+                    for (DiscordApi api : apis) shards.add(api.getServers().size());
+
                     break;
                 case SHARD_ID:
                     // don't define shard ID on multisharded factory

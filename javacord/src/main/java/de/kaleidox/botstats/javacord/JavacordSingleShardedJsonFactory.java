@@ -39,6 +39,9 @@ public class JavacordSingleShardedJsonFactory extends JsonFactory {
 
                     break;
                 case SHARD_ARRAY:
+                    node.putArray("shards")
+                            .add(api.getServers().size());
+
                     break;
                 case SHARD_ID:
                     final int shardId = api.getCurrentShard();
