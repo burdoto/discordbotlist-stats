@@ -5,11 +5,11 @@ import java.net.URL;
 
 import de.kaleidox.botstats.endpoints.Endpoint;
 
-public class EndpointBaseImpl implements Endpoint {
+class EndpointBaseImpl implements Endpoint {
     private final String base;
     private final String appendix;
 
-    public EndpointBaseImpl(String base, String appendix) {
+    EndpointBaseImpl(String base, String appendix) {
         this.base = base;
         this.appendix = appendix;
     }
