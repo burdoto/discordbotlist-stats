@@ -1,0 +1,9 @@
+de.kaleidox.botstats
+de.kaleidox.botstats.discord4j
+de.kaleidox.botstats.endpoints
+de.kaleidox.botstats.endpoints.impl
+de.kaleidox.botstats.exception
+de.kaleidox.botstats.javacord
+de.kaleidox.botstats.jda
+de.kaleidox.botstats.model
+de.kaleidox.botstats.net

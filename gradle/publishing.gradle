@@ -1,0 +1,80 @@
+apply plugin: "io.codearte.nexus-staging"
+
+subprojects {
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+
+    publishing {
+        repositories {
+            maven {
+                url = snapshot
+                        ? "https://oss.sonatype.org/content/repositories/snapshots"
+                        : "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                name = "Sonatype"
+
+                credentials {
+                    username sonatypeUsername
+                    password sonatypePassword
+                }
+            }
+        }
+
+        publications {
+            mavenJava(MavenPublication) {
+                artifactId = "${artifactName}-${project.name}"
+                from components.java
+
+                artifact sourcesJar
+                artifact javadocJar
+
+                pom {
+                    name = projectName
+                    description = projectDescription
+                    inceptionYear = '2019'
+                    url = "https://github.com/burdoto/discorbotlist-stats-${project.name}"
+
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id = "burdoto"
+                            name = "Tobias Burdow"
+                            email = "burdoto@outlook.com"
+                        }
+                    }
+
+                    scm {
+                        connection = 'scm:git:git://github.com/burdoto/discorbotlist-stats.git'
+                        developerConnection = 'scm:git:ssh://github.com/burdoto/discorbotlist-stats.git'
+                        url = 'https://github.com/burdoto/discorbotlist-stats'
+                    }
+                }
+            }
+        }
+    }
+
+    task generateGithubPom(type: GenerateMavenPom) {
+        destination = file("$projectDir/pom.xml")
+        pom = publishing.publications.mavenJava.pom
+    }
+
+    if (!System.getenv().containsKey('JITPACK')) {
+        signing {
+            useGpgCmd()
+            sign publishing.publications.mavenJava
+        }
+    }
+}
+
+tasks.removeAll([promoteRepository, closeAndPromoteRepository, getStagingProfile])
+
+nexusStaging {
+    username sonatypeUsername
+    password sonatypePassword
+}
+

@@ -1,0 +1,108 @@
+buildscript {
+    repositories.gradlePluginPortal()
+    dependencies.classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.20.0"
+}
+
+apply plugin: 'java-library'
+
+group 'de.kaleidox'
+version '0.1.0'
+
+apply from: 'gradle/vars.gradle'
+
+def exportedProjects = [
+        ':core',
+        ':discord4j',
+        ':javacord',
+        ':jda'
+]
+
+wrapper {
+    gradleVersion = '5.2'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+subprojects {
+    apply plugin: 'java-library'
+
+    group 'de.kaleidox'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allJava
+        archiveClassifier = "sources"
+    }
+
+    task javadocJar(type: Jar) {
+        //javadoc
+        from javadoc.destinationDir
+        archiveClassifier = "javadoc"
+    }
+
+    compileJava.options.encoding = 'UTF-8'
+    repositories.jcenter()
+
+    dependencies {
+        compileOnly 'org.jetbrains:annotations:17.0.0'
+        compileOnly 'org.projectlombok:lombok:1.18.8'
+        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.easymock:easymock:4.0.2'
+
+        testCompileOnly 'org.codehaus.groovy:groovy:3.0.0-beta-1'
+
+    }
+}
+
+project(':core') {
+    version '0.1.0'
+}
+
+project(':discord4j') {
+    version '0.1.0'
+
+    dependencies {
+        api project(':core')
+
+        compileOnly 'com.discord4j:discord4j-core:3.0.6'
+        compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
+    }
+}
+
+project(':javacord') {
+    version '0.1.0'
+
+    dependencies {
+        api project(':core')
+
+        compileOnly 'org.javacord:javacord-api:3.0.4'
+        compileOnly 'org.javacord:javacord-core:3.0.4'
+        compileOnly 'org.apache.logging.log4j:log4j-api:2.11.2'
+        compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
+        compileOnly 'com.squareup.okhttp3:okhttp:3.14.2'
+    }
+}
+
+project(':jda') {
+    version '0.1.0'
+
+    dependencies {
+        api project(':core')
+
+        compileOnly 'net.dv8tion:JDA:3.8.3_463'
+        compileOnly 'org.json:json:20160810'
+        compileOnly 'com.squareup.okhttp3:okhttp:3.14.2'
+    }
+}
+
+task allJavadoc(type: Javadoc) {
+    source exportedProjects.collect { project(it).sourceSets.main.allJava }
+    classpath = files(exportedProjects.collect { project(it).sourceSets.main.compileClasspath })
+    options.encoding = 'UTF-8'
+    options.destinationDirectory(file("./docs/"))
+}
+
+apply from: 'gradle/publishing.gradle' // todo

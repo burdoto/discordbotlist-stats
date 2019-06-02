@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>discordbotlist-stats-core</artifactId>
+    <description>Library for posting stats to most available Discord Bot Lists!</description>
+    <developers>
+        <developer>
+            <email>burdoto@outlook.com</email>
+            <id>burdoto</id>
+            <name>Tobias Burdow</name>
+        </developer>
+    </developers>
+    <groupId>de.kaleidox</groupId>
+    <inceptionYear>2019</inceptionYear>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <modelVersion>4.0.0</modelVersion>
+    <name>Discord Bot List Stats</name>
+    <scm>
+        <connection>scm:git:git://github.com/burdoto/discorbotlist-stats.git</connection>
+        <developerConnection>scm:git:ssh://github.com/burdoto/discorbotlist-stats.git
+        </developerConnection>
+        <url>https://github.com/burdoto/discorbotlist-stats</url>
+    </scm>
+    <url>https://github.com/burdoto/discorbotlist-stats-core</url>
+    <version>0.1.0</version>
+</project>

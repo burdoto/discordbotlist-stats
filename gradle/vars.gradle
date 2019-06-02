@@ -1,0 +1,14 @@
+import static java.lang.System.getenv
+
+ext {
+    artifactName = 'discordbotlist-stats'
+    projectName = 'Discord Bot List Stats'
+    projectDescription = 'Library for posting stats to most available Discord Bot Lists!'
+
+    snapshot = project.version.endsWith("-SNAPSHOT")
+
+    sonatypeUsername = getenv("sonatypeUsername")
+    sonatypePassword = getenv("sonatypePassword")
+}
+
+ext."signing.password" = getenv("gpgKeyPassword")
