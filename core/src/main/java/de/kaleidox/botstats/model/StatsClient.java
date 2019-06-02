@@ -38,9 +38,9 @@ public abstract class StatsClient {
      */
     public synchronized CompletableFuture<Void> updateAllStats() {
         if (settings.getPostStatsTester().get()) {
-            final CompletableFuture[] futures = new CompletableFuture[settings.definedTokenCount()];
+            final BotList[] lists = BotList.values();
+            final CompletableFuture[] futures = new CompletableFuture[lists.length];
 
-            BotList[] lists = BotList.values();
             for (int i = 0; i < lists.length; i++) {
                 BotList botList = lists[i];
                 String token = botList.getToken(settings);

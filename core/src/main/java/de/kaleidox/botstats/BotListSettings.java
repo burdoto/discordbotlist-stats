@@ -23,21 +23,4 @@ public class BotListSettings {
     private final String divinediscordbots_com_token;
     private final String bots_ondiscord_xyz_token;
     private @Builder.Default final Supplier<Boolean> postStatsTester = () -> true;
-
-    /**
-     * Returns how many tokens are actually defined.
-     *
-     * @return The count of defined tokens.
-     */
-    public int definedTokenCount() {
-        int c = 0;
-
-        if (discordbots_org_token != null) c++;
-        if (discord_bots_gg_token != null) c++;
-        if (discordbotlist_com_token != null) c++;
-        if (divinediscordbots_com_token != null) c++;
-        if (bots_ondiscord_xyz_token != null) c++;
-
-        return c;
-    }
 }
