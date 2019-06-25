@@ -15,13 +15,15 @@ import de.kaleidox.botstats.BotListSettings;
 import de.kaleidox.botstats.endpoints.Endpoint;
 import de.kaleidox.botstats.net.Method;
 
+import lombok.Getter;
+
 import static de.kaleidox.botstats.net.Method.POST;
 
 /**
  * Base class for handling bot list stats.
  */
 public abstract class StatsClient {
-    protected final BotListSettings settings;
+    protected @Getter final BotListSettings settings;
     protected final JsonFactory jsonFactory;
     protected final Map<BotList, String> tokenMap;
 
