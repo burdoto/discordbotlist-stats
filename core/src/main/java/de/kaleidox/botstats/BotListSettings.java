@@ -1,5 +1,6 @@
 package de.kaleidox.botstats;
 
+import java.io.File;
 import java.util.function.Supplier;
 
 import lombok.AllArgsConstructor;
@@ -22,5 +23,6 @@ public class BotListSettings {
     private final String discordbotlist_com_token;
     private final String divinediscordbots_com_token;
     private final String bots_ondiscord_xyz_token;
+    private final File tokenFile;
     private @Builder.Default final Supplier<Boolean> postStatsTester = () -> true;
 }
