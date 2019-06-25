@@ -140,7 +140,7 @@ public abstract class StatsClient {
 
             for (int i = 0; i < lists.length; i++) {
                 BotList botList = lists[i];
-                String token = botList.getToken(settings);
+                String token = tokenMap.get(botList);
                 Endpoint endpoint = botList.getEndpointLibrary().with(Endpoint.Target.STATS).orElse(null);
 
                 if (token == null || endpoint == null) {
