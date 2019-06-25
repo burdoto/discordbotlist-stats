@@ -9,7 +9,7 @@ Easy-to-use library for posting stats on most available Discord Bot list.
 - [bots.ondiscord.xyz](https://bots.ondiscord.xyz/)
 
 
-## Importing (Javacord)
+## Importing ([Javacord](https://github.com/Javacord/Javacord))
 
 ### Maven
 ```xml
@@ -27,7 +27,7 @@ dependencies {
 }
 ```
 
-## Importing (Discord4J)
+## Importing ([Discord4J](https://github.com/Discord4J/Discord4J))
 
 ### Maven
 ```xml
@@ -45,7 +45,7 @@ dependencies {
 }
 ```
 
-## Importing (JDA)
+## Importing ([JDA](https://github.com/DV8FromTheWorld/JDA))
 
 ### Maven
 ```xml
