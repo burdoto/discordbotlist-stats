@@ -94,7 +94,7 @@ project(':javacord') {
 
         compileOnly 'org.javacord:javacord-api:3.0.4'
         compileOnly 'org.javacord:javacord-core:3.0.4'
-        compileOnly 'org.apache.logging.log4j:log4j-api:2.11.2'
+        compileOnly 'org.apache.logging.log4j:log4j-api:2.12.0'
         compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
         compileOnly 'com.squareup.okhttp3:okhttp:3.14.2'
     }
