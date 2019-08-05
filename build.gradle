@@ -30,7 +30,7 @@ allprojects {
                     "https://docs.oracle.com/javase/8/docs/api/",
                     "https://docs.oracle.com/javaee/7/api/",
                     "https://docs.javacord.org/api/v/3.0.4/",
-                    "https://www.javadoc.io/doc/com.discord4j/discord4j-core/3.0.7", // broken
+                    "https://www.javadoc.io/doc/com.discord4j/discord4j-core/3.0.8", // broken
                     "https://ci.dv8tion.net/job/JDA/javadoc/" // broken
             ]
         }
