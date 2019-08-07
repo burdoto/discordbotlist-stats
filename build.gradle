@@ -107,7 +107,7 @@ project(':jda') {
         api project(':core')
 
         compileOnly 'net.dv8tion:JDA:3.8.3_463'
-        compileOnly 'org.json:json:20180813'
+        compileOnly 'org.json:json:20190722'
         compileOnly 'com.squareup.okhttp3:okhttp:3.14.2'
     }
 }
