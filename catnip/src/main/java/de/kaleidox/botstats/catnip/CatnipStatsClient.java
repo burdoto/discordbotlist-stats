@@ -1,7 +1,10 @@
 package de.kaleidox.botstats.catnip;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
 import de.kaleidox.botstats.BotListSettings;
@@ -13,6 +16,7 @@ import com.mewna.catnip.Catnip;
 import com.mewna.catnip.entity.guild.Guild;
 import com.mewna.catnip.shard.DiscordEvent;
 import com.mewna.catnip.util.logging.LogAdapter;
+import io.vertx.core.eventbus.MessageConsumer;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -23,6 +27,8 @@ public class CatnipStatsClient extends StatsClient {
     private final LogAdapter log;
     private final Catnip api;
     private final OkHttpClient client;
+
+    private final Collection<MessageConsumer<?>> consumers;
 
     /**
      * Single-sharded constructor.
@@ -38,9 +44,26 @@ public class CatnipStatsClient extends StatsClient {
         this.api = api;
 
         client = new OkHttpClient.Builder().build();
+        consumers = new ArrayList<>();
 
-        api.on(DiscordEvent.GUILD_CREATE, this::serverChange);
-        api.on(DiscordEvent.GUILD_DELETE, this::serverChange);
+        consumers.add(api.on(DiscordEvent.GUILD_CREATE, this::serverChange));
+        consumers.add(api.on(DiscordEvent.GUILD_DELETE, this::serverChange));
+    }
+
+    static {
+        Catnip api = Catnip.catnip("token");
+
+        BotListSettings botListSettings = BotListSettings.builder()
+                .tokenFile(new File("list_tokens.properties"))
+                .postStatsTester(OSValidator::isUnix)
+                .build();
+
+        api.loadExtension(new CatnipStatsExtension(botListSettings));
+    }
+
+    @Override
+    public void close() {
+        consumers.forEach(MessageConsumer::unregister);
     }
 
     @Override

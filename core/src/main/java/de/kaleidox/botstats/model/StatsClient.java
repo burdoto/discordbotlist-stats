@@ -1,5 +1,6 @@
 package de.kaleidox.botstats.model;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,7 +23,7 @@ import static de.kaleidox.botstats.net.Method.POST;
 /**
  * Base class for handling bot list stats.
  */
-public abstract class StatsClient {
+public abstract class StatsClient implements Closeable {
     protected @Getter final BotListSettings settings;
     protected final JsonFactory jsonFactory;
     protected final Map<BotList, String> tokenMap;
