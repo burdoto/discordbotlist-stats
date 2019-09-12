@@ -33,7 +33,7 @@ dependencies {
 <dependency>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotslist-stats-discord4j</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ dependencies {
 <dependency>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotslist-stats-javacord</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
 </dependency>
 ```
 
@@ -69,7 +69,7 @@ dependencies {
 <dependency>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotslist-stats-jda</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
 </dependency>
 ```
 
