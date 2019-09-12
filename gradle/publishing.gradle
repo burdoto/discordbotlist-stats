@@ -21,17 +21,20 @@ subprojects {
 
         publications {
             mavenJava(MavenPublication) {
-                artifactId = "${artifactName}-${project.name}"
                 from components.java
-
-                artifact sourcesJar
-                artifact javadocJar
+                if (project.name.equals("${rootProject.name}".toString())) {
+                    artifactId = "${artifactName}"
+                } else {
+                    artifactId = "${artifactName}-${project.name}"
+                    artifact sourcesJar
+                    artifact javadocJar
+                }
 
                 pom {
                     name = projectName
                     description = projectDescription
                     inceptionYear = '2019'
-                    url = "https://github.com/burdoto/discorbotlist-stats-${project.name}"
+                    url = "https://github.com/burdoto/${artifactName}-${project.name}".toString()
 
                     licenses {
                         license {
@@ -49,11 +52,13 @@ subprojects {
                     }
 
                     scm {
-                        connection = 'scm:git:git://github.com/burdoto/discorbotlist-stats.git'
-                        developerConnection = 'scm:git:ssh://github.com/burdoto/discorbotlist-stats.git'
-                        url = 'https://github.com/burdoto/discorbotlist-stats'
+                        connection = "scm:git:git://github.com/burdoto/${projectName}.git".toString()
+                        developerConnection = "scm:git:ssh://github.com/burdoto/${projectName}.git".toString()
+                        url = "https://github.com/burdoto/${projectName}".toString()
                     }
                 }
+
+                System.out.println("Registered artifact publication: '${group}:${artifactId}:${project.version}'")
             }
         }
     }
@@ -74,7 +79,6 @@ subprojects {
 tasks.removeAll([promoteRepository, closeAndPromoteRepository, getStagingProfile])
 
 nexusStaging {
-    username sonatypeUsername
-    password sonatypePassword
+    username sonatypeUsername.toString()
+    password sonatypePassword.toString()
 }
-
