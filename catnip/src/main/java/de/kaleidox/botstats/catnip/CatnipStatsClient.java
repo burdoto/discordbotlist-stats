@@ -50,17 +50,6 @@ public class CatnipStatsClient extends StatsClient {
         consumers.add(api.on(DiscordEvent.GUILD_DELETE, this::serverChange));
     }
 
-    static {
-        Catnip api = Catnip.catnip("token");
-
-        BotListSettings botListSettings = BotListSettings.builder()
-                .tokenFile(new File("list_tokens.properties"))
-                .postStatsTester(OSValidator::isUnix)
-                .build();
-
-        api.loadExtension(new CatnipStatsExtension(botListSettings));
-    }
-
     @Override
     public void close() {
         consumers.forEach(MessageConsumer::unregister);
