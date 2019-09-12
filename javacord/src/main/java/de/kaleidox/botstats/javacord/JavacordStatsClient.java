@@ -2,6 +2,8 @@ package de.kaleidox.botstats.javacord;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -18,6 +20,7 @@ import okhttp3.Response;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.event.server.ServerEvent;
+import org.javacord.api.util.event.ListenerManager;
 import org.javacord.api.util.logging.ExceptionLogger;
 import org.javacord.core.util.logging.LoggerUtil;
 
@@ -29,6 +32,7 @@ public class JavacordStatsClient extends StatsClient {
 
     private final DiscordApi api;
     private final OkHttpClient client;
+    private final Collection<ListenerManager<?>> managers;
 
     /**
      * Single-sharded constructor.
@@ -38,12 +42,14 @@ public class JavacordStatsClient extends StatsClient {
      */
     public JavacordStatsClient(BotListSettings settings, DiscordApi api) {
         super(settings, new JavacordSingleShardedJsonFactory(api));
+
         this.api = api;
 
         client = new OkHttpClient.Builder().build();
+        managers = new ArrayList<>();
 
-        api.addServerJoinListener(this::serverChange);
-        api.addServerLeaveListener(this::serverChange);
+        managers.add(api.addServerJoinListener(this::serverChange));
+        managers.add(api.addServerLeaveListener(this::serverChange));
     }
 
     /**
@@ -57,11 +63,17 @@ public class JavacordStatsClient extends StatsClient {
         this.api = apis.get(0);
 
         client = new OkHttpClient.Builder().build();
+        managers = new ArrayList<>();
 
         apis.forEach(api -> {
-            api.addServerJoinListener(this::serverChange);
-            api.addServerLeaveListener(this::serverChange);
+            managers.add(api.addServerJoinListener(this::serverChange));
+            managers.add(api.addServerLeaveListener(this::serverChange));
         });
+    }
+
+    @Override
+    public void close() {
+        managers.forEach(ListenerManager::remove);
     }
 
     @Override

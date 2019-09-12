@@ -1,6 +1,8 @@
 package de.kaleidox.botstats.discord4j;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -12,8 +14,7 @@ import discord4j.core.DiscordClient;
 import discord4j.core.event.domain.guild.GuildCreateEvent;
 import discord4j.core.event.domain.guild.GuildDeleteEvent;
 import discord4j.core.event.domain.guild.GuildEvent;
-import discord4j.core.event.domain.guild.MemberJoinEvent;
-import discord4j.core.event.domain.guild.MemberLeaveEvent;
+import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 import reactor.netty.ByteBufFlux;
 import reactor.netty.http.client.HttpClient;
@@ -28,6 +29,7 @@ public class Discord4JStatsClient extends StatsClient {
 
     private final DiscordClient d4j;
     private final HttpClient client;
+    private final Collection<Disposable> subscriptions;
 
     /**
      * Single-Sharded constructor.
@@ -37,16 +39,18 @@ public class Discord4JStatsClient extends StatsClient {
      */
     public Discord4JStatsClient(BotListSettings settings, DiscordClient d4j) {
         super(settings, new Discord4JSingleShardedJsonFactory(d4j));
+
         this.d4j = d4j;
 
         client = HttpClient.create();
+        subscriptions = new ArrayList<>();
 
-        d4j.getEventDispatcher()
+        subscriptions.add(d4j.getEventDispatcher()
                 .on(GuildCreateEvent.class)
-                .subscribe(this::serverChange);
-        d4j.getEventDispatcher()
+                .subscribe(this::serverChange));
+        subscriptions.add(d4j.getEventDispatcher()
                 .on(GuildDeleteEvent.class)
-                .subscribe(this::serverChange);
+                .subscribe(this::serverChange));
     }
 
     /**
@@ -60,15 +64,21 @@ public class Discord4JStatsClient extends StatsClient {
         this.d4j = d4js.get(0);
 
         client = HttpClient.create();
+        subscriptions = new ArrayList<>();
 
         d4js.forEach(d4j -> {
-            d4j.getEventDispatcher()
+            subscriptions.add(d4j.getEventDispatcher()
                     .on(GuildCreateEvent.class)
-                    .subscribe(this::serverChange);
-            d4j.getEventDispatcher()
+                    .subscribe(this::serverChange));
+            subscriptions.add(d4j.getEventDispatcher()
                     .on(GuildDeleteEvent.class)
-                    .subscribe(this::serverChange);
+                    .subscribe(this::serverChange));
         });
+    }
+
+    @Override
+    public void close() {
+        subscriptions.forEach(Disposable::dispose);
     }
 
     @Override

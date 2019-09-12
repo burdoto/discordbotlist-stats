@@ -14,8 +14,6 @@ import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.events.guild.GenericGuildEvent;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.guild.GuildLeaveEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import net.dv8tion.jda.core.utils.JDALogger;
 import okhttp3.MediaType;
@@ -34,6 +32,7 @@ public class JDAStatsClient extends StatsClient {
 
     private final JDA jda;
     private final OkHttpClient client;
+    private final ListenerAdapter listenerAdapter;
 
     /**
      * Constructor.
@@ -43,36 +42,26 @@ public class JDAStatsClient extends StatsClient {
      */
     public JDAStatsClient(BotListSettings settings, JDA jda) {
         super(settings, new JDAJsonFactory(jda));
+
         this.jda = jda;
 
         client = new OkHttpClient.Builder().build();
 
+        listenerAdapter = new ListenerAdapterImpl();
         @Nullable ShardManager shardManager = jda.asBot().getShardManager();
-        if (shardManager == null) {
-            jda.addEventListener(new ListenerAdapter() {
-                @Override
-                public void onGuildJoin(GuildJoinEvent event) {
-                    serverChange(event);
-                }
 
-                @Override
-                public void onGuildLeave(GuildLeaveEvent event) {
-                    serverChange(event);
-                }
-            });
-        } else {
-            shardManager.addEventListener(new ListenerAdapter() {
-                @Override
-                public void onGuildJoin(GuildJoinEvent event) {
-                    serverChange(event);
-                }
+        if (shardManager == null)
+            jda.addEventListener(listenerAdapter);
+        else shardManager.addEventListener(listenerAdapter);
+    }
 
-                @Override
-                public void onGuildLeave(GuildLeaveEvent event) {
-                    serverChange(event);
-                }
-            });
-        }
+    @Override
+    public void close() {
+        @Nullable ShardManager shardManager = jda.asBot().getShardManager();
+
+        if (shardManager == null)
+            jda.removeEventListener(listenerAdapter);
+        else shardManager.removeEventListener(listenerAdapter);
     }
 
     @Override
@@ -110,5 +99,17 @@ public class JDAStatsClient extends StatsClient {
 
     private void serverChange(GenericGuildEvent event) {
         updateAllStats();
+    }
+
+    private class ListenerAdapterImpl extends ListenerAdapter {
+        @Override
+        public void onGuildJoin(GuildJoinEvent event) {
+            serverChange(event);
+        }
+
+        @Override
+        public void onGuildLeave(GuildLeaveEvent event) {
+            serverChange(event);
+        }
     }
 }
