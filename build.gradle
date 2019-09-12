@@ -96,7 +96,7 @@ project(':javacord') {
         compileOnly 'org.javacord:javacord-core:3.0.4'
         compileOnly 'org.apache.logging.log4j:log4j-api:2.12.1'
         compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
-        compileOnly 'com.squareup.okhttp3:okhttp:3.14.2'
+        compileOnly 'com.squareup.okhttp3:okhttp:3.14.3'
     }
 }
 
@@ -108,7 +108,7 @@ project(':jda') {
 
         compileOnly 'net.dv8tion:JDA:3.8.3_463'
         compileOnly 'org.json:json:20190722'
-        compileOnly 'com.squareup.okhttp3:okhttp:3.14.2'
+        compileOnly 'com.squareup.okhttp3:okhttp:3.14.3'
     }
 }
 
