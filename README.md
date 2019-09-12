@@ -8,22 +8,21 @@ Easy-to-use library for posting stats on most available Discord Bot list.
 - [divinediscordbots.com](https://divinediscordbots.com/)
 - [bots.ondiscord.xyz](https://bots.ondiscord.xyz/)
 
-
-## Importing ([Javacord](https://github.com/Javacord/Javacord))
+## Importing ([Catnip](https://github.com/mewna/catnip))
 
 ### Maven
 ```xml
 <dependency>
   <groupId>de.kaleidox</groupId>
-  <artifactId>discordbotslist-stats-javacord</artifactId>
-  <version>0.1.2</version>
+  <artifactId>discordbotslist-stats-catnip</artifactId>
+  <version>0.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.2'
+    implementation 'de.kaleidox:discordbotlist-stats-catnip:0.1.0'
 }
 ```
 
@@ -41,7 +40,25 @@ dependencies {
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-discord4j:0.1.2'
+    implementation 'de.kaleidox:discordbotlist-stats-discord4j:0.1.3'
+}
+```
+
+## Importing ([Javacord](https://github.com/Javacord/Javacord))
+
+### Maven
+```xml
+<dependency>
+  <groupId>de.kaleidox</groupId>
+  <artifactId>discordbotslist-stats-javacord</artifactId>
+  <version>0.1.2</version>
+</dependency>
+```
+
+### Gradle
+```groovy
+dependencies {
+    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.3'
 }
 ```
 
@@ -59,8 +76,35 @@ dependencies {
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.2'
+    implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.3'
 }
+```
+
+## Usage example: Catnip
+With Catnip, using this library becomes easy-as-pie!
+You only need to do two additional steps:
+
+1. Build a `BotListSettings` object.
+2. Load the `CatnipStatsExtension` in Catnip.
+
+##### Example code:
+```java
+Catnip catnip = Catnip.catnip("token");
+
+/* ... */
+
+BotListSettings botListSettings = BotListSettings.builder()
+        /* define a file from which tokens will be scanned */
+        .tokenFile(new File("list_tokens.properties"))
+        /* 
+            define a Supplier<Boolean> to tell the library when updating should be disabled
+            in this case, we check for the OS using another class
+        */
+        .postStatsTester(OSValidator::isUnix)
+        .build();
+
+// load the extension
+catnip.loadExtension(new CatnipStatsExtension(botListSettings));
 ```
 
 ## Usage example: Javacord
