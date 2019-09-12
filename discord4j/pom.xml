@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.kaleidox</groupId>
   <artifactId>discordbotlist-stats-discord4j</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
   <name>Discord Bot List Stats</name>
   <description>Library for posting stats to most available Discord Bot Lists!</description>
-  <url>https://github.com/burdoto/discorbotlist-stats-discord4j</url>
+  <url>https://github.com/burdoto/discordbotlist-stats-discord4j</url>
   <inceptionYear>2019</inceptionYear>
   <licenses>
     <license>
@@ -23,15 +23,15 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git://github.com/burdoto/discorbotlist-stats.git</connection>
-    <developerConnection>scm:git:ssh://github.com/burdoto/discorbotlist-stats.git</developerConnection>
-    <url>https://github.com/burdoto/discorbotlist-stats</url>
+    <connection>scm:git:git://github.com/burdoto/Discord Bot List Stats.git</connection>
+    <developerConnection>scm:git:ssh://github.com/burdoto/Discord Bot List Stats.git</developerConnection>
+    <url>https://github.com/burdoto/Discord Bot List Stats</url>
   </scm>
   <dependencies>
     <dependency>
       <groupId>de.kaleidox</groupId>
       <artifactId>discordbotlist-stats-core</artifactId>
-      <version>0.1.2</version>
+      <version>0.1.3</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
