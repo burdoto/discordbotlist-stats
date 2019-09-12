@@ -7,11 +7,20 @@ import de.kaleidox.botstats.BotListSettings;
 import com.mewna.catnip.extension.AbstractExtension;
 import com.mewna.catnip.extension.Extension;
 
+/**
+ * Catnip extension implementing functionality of the DiscordBotList-Stats library.
+ */
 public class CatnipStatsExtension extends AbstractExtension implements Extension {
     private final BotListSettings settings;
 
     private CatnipStatsClient client;
 
+    /**
+     * Constructor.
+     * The defined {@linkplain BotListSettings settings object} can be modified itself to change tokens on-the-go.
+     *
+     * @param settings The settings object for initialization.
+     */
     public CatnipStatsExtension(BotListSettings settings) {
         super("DiscordBotList-Stats (Catnip)");
 
@@ -26,5 +35,8 @@ public class CatnipStatsExtension extends AbstractExtension implements Extension
     @Override
     public void stop() {
         client.close();
+
+        //noinspection ConstantConditions
+        client = null;
     }
 }

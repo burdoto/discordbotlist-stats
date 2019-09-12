@@ -30,7 +30,7 @@ public class CatnipStatsClient extends StatsClient {
     private final Collection<MessageConsumer<?>> consumers;
 
     /**
-     * Single-sharded constructor.
+     * Constructor. Catnip automatically handles sharding.
      *
      * @param settings The settings object.
      * @param api      A Catnip instance.
