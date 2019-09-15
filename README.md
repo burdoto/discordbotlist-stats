@@ -14,9 +14,9 @@ The core module holds basic implementation and is necessary for `discordbotlist-
 The core module is the only dependency of each submodule, so you can just simply depend on the module that you need for the library you are using.
 All other dependencies, like the REST-Client, or a JSON library are used from the respective library. Why depend on them if they are already there?  
 
-## Importing ([Catnip](https://github.com/mewna/catnip)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-catnip.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-catnip) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-catnip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-catnip)
-
-### Maven
+## Using with [Catnip](https://github.com/mewna/catnip) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-catnip.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-catnip) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-catnip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-catnip)
+### Adding the dependency to your project...
+#### ...when using Maven
 ```xml
 <dependency>
   <groupId>de.kaleidox</groupId>
@@ -24,75 +24,18 @@ All other dependencies, like the REST-Client, or a JSON library are used from th
   <version>0.1.0</version>
 </dependency>
 ```
-
-### Gradle
+#### ...when using Gradle
 ```groovy
 dependencies {
     implementation 'de.kaleidox:discordbotlist-stats-catnip:0.1.0'
 }
 ```
-
-## Importing ([Discord4J](https://github.com/Discord4J/Discord4J)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-discord4j.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-discord4j) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-discord4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-discord4j)
-
-### Maven
-```xml
-<dependency>
-  <groupId>de.kaleidox</groupId>
-  <artifactId>discordbotslist-stats-discord4j</artifactId>
-  <version>0.1.3</version>
-</dependency>
-```
-
-### Gradle
-```groovy
-dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-discord4j:0.1.3'
-}
-```
-
-## Importing ([Javacord](https://github.com/Javacord/Javacord)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-javacord.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-javacord) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-javacord/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-javacord)
-
-### Maven
-```xml
-<dependency>
-  <groupId>de.kaleidox</groupId>
-  <artifactId>discordbotslist-stats-javacord</artifactId>
-  <version>0.1.3</version>
-</dependency>
-```
-
-### Gradle
-```groovy
-dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.3'
-}
-```
-
-## Importing ([JDA](https://github.com/DV8FromTheWorld/JDA)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-jda.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-jda) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-jda/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-jda)
-
-### Maven
-```xml
-<dependency>
-  <groupId>de.kaleidox</groupId>
-  <artifactId>discordbotslist-stats-jda</artifactId>
-  <version>0.1.3</version>
-</dependency>
-```
-
-### Gradle
-```groovy
-dependencies {
-    implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.3'
-}
-```
-
-## Usage example: Catnip
+### Usage
 With Catnip, using this library becomes easy-as-pie!
 You only need to do two additional steps:
 
 1. Build a `BotListSettings` object.
 2. Load the `CatnipStatsExtension` in Catnip.
-
 ##### Example code:
 ```java
 Catnip catnip = Catnip.catnip("token");
@@ -113,10 +56,42 @@ BotListSettings botListSettings = BotListSettings.builder()
 catnip.loadExtension(new CatnipStatsExtension(botListSettings));
 ```
 
-## Usage example: Javacord
+## Using with [Discord4J](https://github.com/Discord4J/Discord4J) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-discord4j.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-discord4j) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-discord4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-discord4j)
+### Adding the dependency to your project...
+#### ...when using Maven
+```xml
+<dependency>
+  <groupId>de.kaleidox</groupId>
+  <artifactId>discordbotslist-stats-discord4j</artifactId>
+  <version>0.1.3</version>
+</dependency>
+```
+#### ...when using Gradle
+```groovy
+dependencies {
+    implementation 'de.kaleidox:discordbotlist-stats-discord4j:0.1.3'
+}
+```
+
+## Using with [Javacord](https://github.com/Javacord/Javacord) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-javacord.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-javacord) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-javacord/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-javacord)
+### Adding the dependency to your project...
+#### ...when using Maven
+```xml
+<dependency>
+  <groupId>de.kaleidox</groupId>
+  <artifactId>discordbotslist-stats-javacord</artifactId>
+  <version>0.1.3</version>
+</dependency>
+```
+#### ...when using Gradle
+```groovy
+dependencies {
+    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.3'
+}
+```
+### Usage
 You have two possible ways of using this library.
 In these examples, we will be using Javacord for demonstration purposes.
-
 #### Creating a Single-Sharded stats connection
 To create a single sharded stats connection, you must first define your Javacord `DiscordApi` object, and then pass that to the `JavacordStatsClient` constructor.
 
@@ -130,7 +105,6 @@ DiscordApi api = new DiscordApiBuilder()
         .join();
 
 BotListSettings settings = BotListSettings.builder()
-        .postStatsTester(OSValidator::isUnix)
         /* define all tokens that you want to use */
         .discordbots_org_token(/* token */)
         .divinediscordbots_com_token(/* token */)
@@ -140,3 +114,20 @@ StatsClient stats = new JavacordStatsClient(settings, API);
 That's it already! The `StatsClient` object does the rest for you.
 In every library, it will register itself as a `GuildJoin` and `GuildLeave` listener, 
 and update the stats everytime the bot joins or leaves a guild.
+
+## Using with [JDA](https://github.com/DV8FromTheWorld/JDA) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-jda.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-jda) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-jda/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-jda)
+### Adding the dependency to your project...
+#### ...when using Maven
+```xml
+<dependency>
+  <groupId>de.kaleidox</groupId>
+  <artifactId>discordbotslist-stats-jda</artifactId>
+  <version>0.1.3</version>
+</dependency>
+```
+#### ...when using Gradle
+```groovy
+dependencies {
+    implementation 'de.kaleidox:discordbotlist-stats-jda:0.1.3'
+}
+```
