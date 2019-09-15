@@ -1,4 +1,4 @@
-# Discord BotList Stats [![Build Status](https://travis-ci.com/burdoto/discordbotlist-stats.svg?branch=master)](https://travis-ci.com/burdoto/discordbotlist-stats) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats) [![Development Release](https://jitpack.io/v/burdoto/discordbotlist-stats.svg)](https://jitpack.io/#burdoto/discordbotlist-stats)
+# Discord BotList Stats ![Build Status](https://github.com/burdoto/VBAN-API/workflows/Build%20Tests/badge.svg) [![Development Release](https://jitpack.io/v/burdoto/discordbotlist-stats.svg)](https://jitpack.io/#burdoto/discordbotlist-stats)
 Easy-to-use library for posting stats on most available Discord Bot list.
 
 ### Currently Supported:
@@ -8,7 +8,13 @@ Easy-to-use library for posting stats on most available Discord Bot list.
 - [divinediscordbots.com](https://divinediscordbots.com/)
 - [bots.ondiscord.xyz](https://bots.ondiscord.xyz/)
 
-## Importing ([Catnip](https://github.com/mewna/catnip))
+## Core Module [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-core.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-core) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-core)
+The core module holds basic implementation and is necessary for `discordbotlist-stats` to work properly.
+
+The core module is the only dependency of each submodule, so you can just simply depend on the module that you need for the library you are using.
+All other dependencies, like the REST-Client, or a JSON library are used from the respective library. Why depend on them if they are already there?  
+
+## Importing ([Catnip](https://github.com/mewna/catnip)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-catnip.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-catnip) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-catnip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-catnip)
 
 ### Maven
 ```xml
@@ -26,7 +32,7 @@ dependencies {
 }
 ```
 
-## Importing ([Discord4J](https://github.com/Discord4J/Discord4J))
+## Importing ([Discord4J](https://github.com/Discord4J/Discord4J)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-discord4j.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-discord4j) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-discord4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-discord4j)
 
 ### Maven
 ```xml
@@ -44,7 +50,7 @@ dependencies {
 }
 ```
 
-## Importing ([Javacord](https://github.com/Javacord/Javacord))
+## Importing ([Javacord](https://github.com/Javacord/Javacord)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-javacord.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-javacord) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-javacord/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-javacord)
 
 ### Maven
 ```xml
@@ -62,7 +68,7 @@ dependencies {
 }
 ```
 
-## Importing ([JDA](https://github.com/DV8FromTheWorld/JDA))
+## Importing ([JDA](https://github.com/DV8FromTheWorld/JDA)) [![Javadocs](http://javadoc.io/badge/de.kaleidox/discordbotlist-stats-jda.svg)](http://javadoc.io/doc/de.kaleidox/discordbotlist-stats-jda) [![Maven Central Release](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-jda/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.kaleidox/discordbotlist-stats-jda)
 
 ### Maven
 ```xml
