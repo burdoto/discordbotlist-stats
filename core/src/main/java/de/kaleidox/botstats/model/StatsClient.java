@@ -41,7 +41,7 @@ public abstract class StatsClient implements Closeable {
         tokenMap = new ConcurrentHashMap<>();
         if (settings.getTokenFile() != null) {
             // use token file
-            System.out.println("Reading tokens from token file...");
+            logDebug("Reading tokens from token file...");
 
             try {
                 updateTokensFromFile();
@@ -51,7 +51,7 @@ public abstract class StatsClient implements Closeable {
             }
         } else {
             // use defined tokens
-            System.out.println("Using tokens defined in BotListSettings...");
+            logDebug("Using tokens defined in BotListSettings...");
 
             updateTokensFromSettings();
         }
