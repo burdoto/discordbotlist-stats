@@ -6,7 +6,7 @@ buildscript {
 apply plugin: 'java-library'
 
 group 'de.kaleidox'
-version '4' // actually build number
+version '5' // actually build number
 
 apply from: 'gradle/vars.gradle'
 
@@ -73,7 +73,7 @@ subprojects {
 }
 
 project(':core') {
-    version '0.1.3'
+    version '0.1.4'
 }
 
 project(':catnip') {
