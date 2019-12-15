@@ -98,27 +98,14 @@ public abstract class StatsClient implements Closeable {
         properties.load(in);
         in.close();
 
-        String buf;
+        for (BotList botList : BotList.values()) {
+            final String key = botList.name().toLowerCase() + "_token";
+            final String token = properties.getProperty(key);
 
-        if ((buf = properties.getProperty("top_gg_token")) == null || !buf.equals("[token]"))
-            properties.setProperty("top_gg_token", "[token]");
-        else tokenMap.put(BotList.TOP_GG, buf);
-
-        if ((buf = properties.getProperty("discord_bots_gg_token")) == null || !buf.equals("[token]"))
-            properties.setProperty("discord_bots_gg_token", "[token]");
-        else tokenMap.put(BotList.DISCORD_BOTS_GG, buf);
-
-        if ((buf = properties.getProperty("discordbotlist_com_token")) == null || buf.equals("[token]"))
-            properties.setProperty("discordbotlist_com_token", "[token]");
-        else tokenMap.put(BotList.DISCORDBOTLIST_COM, buf);
-
-        if ((buf = properties.getProperty("divinediscordbots_com_token")) == null || !buf.equals("[token]"))
-            properties.setProperty("divinediscordbots_com_token", "[token]");
-        else tokenMap.put(BotList.DIVINEDISCORDBOTS_COM, buf);
-
-        if ((buf = properties.getProperty("bots_ondiscord_xyz_token")) == null || !buf.equals("[token]"))
-            properties.setProperty("bots_ondiscord_xyz_token", "[token]");
-        else tokenMap.put(BotList.BOTS_ONDISCORD_XYZ, buf);
+            if (token == null || token.equals("[token]"))
+                properties.setProperty(key, "[token]");
+            else tokenMap.put(botList, token);
+        }
 
         FileOutputStream out = new FileOutputStream(f);
         properties.store(out, "Define your bot list tokens here. " +
