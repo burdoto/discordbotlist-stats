@@ -12,6 +12,7 @@ apply from: 'gradle/vars.gradle'
 
 def exportedProjects = [
         ':core',
+        ':catnip',
         ':discord4j',
         ':javacord',
         ':jda'
