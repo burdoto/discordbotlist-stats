@@ -62,22 +62,12 @@ public abstract class StatsClient implements Closeable {
      * Does nothing if no tokens are defined in the settings object.
      */
     public void updateTokensFromSettings() {
-        String buf;
+        for (BotList botList : BotList.values()) {
+            final String token = botList.getToken(settings);
 
-        if ((buf = settings.getTop_gg_token()) != null)
-            tokenMap.put(BotList.TOP_GG, buf);
-
-        if ((buf = settings.getDiscord_bots_gg_token()) != null)
-            tokenMap.put(BotList.DISCORD_BOTS_GG, buf);
-
-        if ((buf = settings.getDiscordbotlist_com_token()) != null)
-            tokenMap.put(BotList.DISCORDBOTLIST_COM, buf);
-
-        if ((buf = settings.getDivinediscordbots_com_token()) != null)
-            tokenMap.put(BotList.DIVINEDISCORDBOTS_COM, buf);
-
-        if ((buf = settings.getBots_ondiscord_xyz_token()) != null)
-            tokenMap.put(BotList.BOTS_ONDISCORD_XYZ, buf);
+            if (token != null && !token.equals("[token]"))
+                tokenMap.put(botList, token);
+        }
     }
 
     /**
