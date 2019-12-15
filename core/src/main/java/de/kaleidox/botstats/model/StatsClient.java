@@ -137,7 +137,7 @@ public abstract class StatsClient implements Closeable {
     public synchronized CompletableFuture<Void> updateAllStats() {
         if (settings.getPostStatsTester().get()) {
             final BotList[] lists = BotList.values();
-            final CompletableFuture[] futures = new CompletableFuture[lists.length];
+            final CompletableFuture<?>[] futures = new CompletableFuture[lists.length];
 
             for (int i = 0; i < lists.length; i++) {
                 BotList botList = lists[i];
