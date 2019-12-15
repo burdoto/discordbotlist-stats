@@ -108,8 +108,7 @@ public abstract class StatsClient implements Closeable {
         }
 
         FileOutputStream out = new FileOutputStream(f);
-        properties.store(out, "Define your bot list tokens here. " +
-                "\"[token]\" is the default value for no token.");
+        properties.store(out, "Define your bot list tokens here. \"[token]\" is the default value for no token.");
         out.close();
     }
 
