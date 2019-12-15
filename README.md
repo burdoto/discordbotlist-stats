@@ -1,6 +1,8 @@
 # Discord BotList Stats ![Build Status](https://github.com/burdoto/VBAN-API/workflows/Build%20Tests/badge.svg) [![Development Release](https://jitpack.io/v/burdoto/discordbotlist-stats.svg)](https://jitpack.io/#burdoto/discordbotlist-stats)
 Easy-to-use library for posting stats on most available Discord Bot list.
 
+#### Warning: The Maven Central release is __not__ up to date. Please use the JitPack release instead.
+
 ### Currently Supported:
 - [top.gg](https://top.gg/)
 - [discord.bots.gg](https://discord.bots.gg/)
