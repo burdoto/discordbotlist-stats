@@ -8,12 +8,12 @@ import de.kaleidox.botstats.endpoints.Endpoint;
 import static java.util.Optional.of;
 
 /**
- * Endpoint library implementation for {@link BotList#DISCORDBOTS_ORG}.
+ * Endpoint library implementation for {@link BotList#TOP_GG}.
  */
-public enum DiscordbotsOrgEndpointLibrary implements Endpoint.Library {
+public enum TopGgEndpointLibrary implements Endpoint.Library {
     INSTANCE;
 
-    public static final String BASE = "https://discordbots.org/api";
+    public static final String BASE = "https://top.gg/api";
 
     private final Endpoint STATS = new EndpointBaseImpl(BASE, "/bots/%d/stats");
 

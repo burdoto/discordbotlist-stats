@@ -18,7 +18,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class BotListSettings {
-    private final String discordbots_org_token;
+    private final String top_gg_token;
     private final String discord_bots_gg_token;
     private final String discordbotlist_com_token;
     private final String divinediscordbots_com_token;

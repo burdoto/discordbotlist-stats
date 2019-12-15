@@ -7,8 +7,8 @@ import de.kaleidox.botstats.endpoints.Scope;
 import de.kaleidox.botstats.endpoints.impl.BotsOndiscordXyzEndpointLibrary;
 import de.kaleidox.botstats.endpoints.impl.DiscordBotsGgEndpointLibrary;
 import de.kaleidox.botstats.endpoints.impl.DiscordbotlistComEndpointLibrary;
-import de.kaleidox.botstats.endpoints.impl.DiscordbotsOrgEndpointLibrary;
 import de.kaleidox.botstats.endpoints.impl.DivinediscordbotsComEndpointLibrary;
+import de.kaleidox.botstats.endpoints.impl.TopGgEndpointLibrary;
 
 import static de.kaleidox.botstats.endpoints.Scope.SERVER_COUNT;
 import static de.kaleidox.botstats.endpoints.Scope.SHARD_ARRAY;
@@ -22,9 +22,9 @@ import static de.kaleidox.botstats.endpoints.Scope.VOICE_CONNECTION_COUNT;
  */
 public enum BotList {
     /**
-     * Entry for https://discordbots.org/
+     * Entry for https://top.gg/
      */
-    DISCORDBOTS_ORG(BotListSettings::getDiscordbots_org_token, DiscordbotsOrgEndpointLibrary.INSTANCE,
+    TOP_GG(BotListSettings::getDiscordbots_org_token, TopGgEndpointLibrary.INSTANCE,
             SERVER_COUNT, SHARD_ARRAY, SHARD_ID, SHARD_COUNT),
 
     /**

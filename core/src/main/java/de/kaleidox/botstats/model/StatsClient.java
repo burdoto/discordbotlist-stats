@@ -64,8 +64,8 @@ public abstract class StatsClient implements Closeable {
     public void updateTokensFromSettings() {
         String buf;
 
-        if ((buf = settings.getDiscordbots_org_token()) != null)
-            tokenMap.put(BotList.DISCORDBOTS_ORG, buf);
+        if ((buf = settings.getTop_gg_token()) != null)
+            tokenMap.put(BotList.TOP_GG, buf);
 
         if ((buf = settings.getDiscord_bots_gg_token()) != null)
             tokenMap.put(BotList.DISCORD_BOTS_GG, buf);
@@ -100,9 +100,9 @@ public abstract class StatsClient implements Closeable {
 
         String buf;
 
-        if ((buf = properties.getProperty("discordbots_org_token")) == null || !buf.equals("[token]"))
-            properties.setProperty("discordbots_org_token", "[token]");
-        else tokenMap.put(BotList.DISCORDBOTS_ORG, buf);
+        if ((buf = properties.getProperty("top_gg_token")) == null || !buf.equals("[token]"))
+            properties.setProperty("top_gg_token", "[token]");
+        else tokenMap.put(BotList.TOP_GG, buf);
 
         if ((buf = properties.getProperty("discord_bots_gg_token")) == null || !buf.equals("[token]"))
             properties.setProperty("discord_bots_gg_token", "[token]");
