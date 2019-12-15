@@ -24,7 +24,7 @@ public enum BotList {
     /**
      * Entry for https://top.gg/
      */
-    TOP_GG(BotListSettings::getDiscordbots_org_token, TopGgEndpointLibrary.INSTANCE,
+    TOP_GG(BotListSettings::getTop_gg_token, TopGgEndpointLibrary.INSTANCE,
             SERVER_COUNT, SHARD_ARRAY, SHARD_ID, SHARD_COUNT),
 
     /**
