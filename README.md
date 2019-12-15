@@ -106,8 +106,8 @@ DiscordApi api = new DiscordApiBuilder()
 
 BotListSettings settings = BotListSettings.builder()
         /* define all tokens that you want to use */
-        .top_gg_token(/* token */)
-        .divinediscordbots_com_token(/* token */)
+        .setTop_gg_token(/* token */)
+        .setDivinediscordbots_com_token(/* token */)
         .build();
 StatsClient stats = new JavacordStatsClient(settings, API);
 ```
