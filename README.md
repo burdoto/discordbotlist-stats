@@ -2,7 +2,7 @@
 Easy-to-use library for posting stats on most available Discord Bot list.
 
 ### Currently Supported:
-- [discordbots.org](https://discordbots.org/)
+- [top.gg](https://top.gg/)
 - [discord.bots.gg](https://discord.bots.gg/)
 - [discordbotslist.com](https://discordbotlist.com/)
 - [divinediscordbots.com](https://divinediscordbots.com/)
