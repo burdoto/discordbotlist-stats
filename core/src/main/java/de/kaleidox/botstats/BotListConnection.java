@@ -1,11 +1,17 @@
 package de.kaleidox.botstats;
 
+import org.comroid.restless.HttpAdapter;
+import org.comroid.uniform.SerializationAdapter;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class BotListConnection {
+    public static SerializationAdapter<?,?,?> SERIALIZATION;
+    public static HttpAdapter HTTP;
+
     private final long botID;
     private final Set<BotList> supported;
 
