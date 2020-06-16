@@ -59,12 +59,22 @@ subprojects {
     }
 
     compileJava.options.encoding = 'UTF-8'
-    repositories.jcenter()
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://maven.jetbrains.space/comroid/release"
+            credentials.username "Anonymous.User"
+            credentials.password "anonymous"
+        }
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+    }
 
     dependencies {
-        compileOnly 'org.jetbrains:annotations:17.0.0'
-        compileOnly 'org.projectlombok:lombok:1.18.10'
-        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+        implementation 'org.comroid:restless:0.15.2'
+        
+        compileOnly 'org.jetbrains:annotations:19.0.0'
+        implementation 'com.google.flogger:flogger:0.5.1'
 
         testImplementation 'junit:junit:4.12'
         testImplementation 'org.easymock:easymock:4.0.2'
