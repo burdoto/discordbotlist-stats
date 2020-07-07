@@ -1,4 +1,5 @@
-apply plugin: "io.codearte.nexus-staging"
+if (project == rootProject)
+    apply plugin: "io.codearte.nexus-staging"
 
 subprojects {
     apply plugin: 'maven-publish'
@@ -75,8 +76,6 @@ subprojects {
         }
     }
 }
-
-tasks.removeAll([promoteRepository, closeAndPromoteRepository, getStagingProfile])
 
 nexusStaging {
     username sonatypeUsername.toString()
