@@ -78,7 +78,7 @@ subprojects {
         implementation 'com.google.flogger:flogger:0.5.1'
 
         testImplementation 'junit:junit:4.12'
-        testImplementation 'org.easymock:easymock:4.0.2'
+        testImplementation 'org.easymock:easymock:4.2'
 
         testCompileOnly 'org.codehaus.groovy:groovy:3.0.0-beta-3'
     }
