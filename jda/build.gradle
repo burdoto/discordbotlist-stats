@@ -5,5 +5,5 @@ dependencies {
 
     compileOnly 'net.dv8tion:JDA:3.8.3_463'
     runtimeOnly 'org.json:json:20190722'
-    runtimeOnly 'com.squareup.okhttp3:okhttp:3.14.3'
+    runtimeOnly 'com.squareup.okhttp3:okhttp:3.14.9'
 }
