@@ -1,0 +1,52 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.squareup.okhttp3:okhttp
+    versions:
+    - ">= 4.a, < 5"
+  - dependency-name: org.javacord:javacord-api
+    versions:
+    - 3.1.2
+    - 3.2.0
+  - dependency-name: org.javacord:javacord-core
+    versions:
+    - 3.1.2
+    - 3.2.0
+  - dependency-name: net.dv8tion:JDA
+    versions:
+    - 4.2.0_227
+    - 4.2.0_228
+    - 4.2.0_229
+    - 4.2.0_230
+    - 4.2.0_231
+    - 4.2.0_236
+    - 4.2.0_239
+    - 4.2.0_240
+    - 4.2.0_241
+    - 4.2.0_242
+    - 4.2.0_245
+  - dependency-name: com.fasterxml.jackson.core:jackson-databind
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: org.apache.logging.log4j:log4j-api
+    versions:
+    - 2.14.0
+  - dependency-name: junit:junit
+    versions:
+    - 4.13.1
+  - dependency-name: com.mewna:catnip
+    versions:
+    - 2.1.1
+  - dependency-name: io.codearte.gradle.nexus:gradle-nexus-staging-plugin
+    versions:
+    - 0.22.0
+  - dependency-name: org.easymock:easymock
+    versions:
+    - "4.2"
